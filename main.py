@@ -7,7 +7,9 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 clock = pygame.time.Clock()
 level = Level(level_map, screen)
 bg_image = pygame.transform.scale(pygame.image.load('graphics/level/background.png').convert_alpha(), (screen_width, screen_height))
+bg_music = pygame.mixer.music.load("sounds/music.ogg")
 
+pygame.mixer.music.play(-1)
 
 while not level.game_over():
 	for event in pygame.event.get():
