@@ -15,11 +15,17 @@ class Level:
 
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
+                has_grass = True
                 x = col_index * tile_size
                 y = row_index * tile_size
                 
                 if cell == "x":
-                    tile = Tile((x, y), tile_size)
+                    try:
+                        if level_map[row_index - 1][col_index] == "x":
+                            has_grass = False
+                    except:
+                        pass
+                    tile = Tile((x, y), tile_size, has_grass)
                     self.tiles.add(tile)
                 if cell == 'P':
                     player_sprite = Player((x, y))
@@ -55,6 +61,10 @@ class Level:
         player = self.player.sprite
         player.apply_gravity()
 
+        if player.rect.y < 0:
+            player.rect.y = 0
+            player.direction.y = 0
+
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
                 if player.direction.y > 0:
@@ -63,6 +73,9 @@ class Level:
                 elif player.direction.y < 0:
                     player.rect.top = sprite.rect.bottom
                     player.direction.y = 0
+
+    def game_over(self):
+        return self.player.sprite.is_out_of_world()
 
     def run(self):
         self.tiles.update(self.world_shift)

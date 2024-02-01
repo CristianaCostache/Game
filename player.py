@@ -74,6 +74,9 @@ class Player(pygame.sprite.Sprite):
     def jump(self):
         self.direction.y = self.jump_speed
 
+    def is_out_of_world(self):
+        return self.rect.y > screen_height
+
     def update(self):
         self.get_input()
         self.get_status()
