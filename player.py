@@ -12,9 +12,9 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(topleft=pos)
 
         self.direction = pygame.math.Vector2(0, 0)
-        self.speed = speed
-        self.gravity = gravity
-        self.jump_speed = jump_speed
+        self.speed = SPEED
+        self.gravity = GRAVITY
+        self.jump_speed = JUMP_SPEED
 
         self.status = 'idle'
         self.facing_right = True
@@ -75,7 +75,7 @@ class Player(pygame.sprite.Sprite):
         self.direction.y = self.jump_speed
 
     def is_out_of_world(self):
-        return self.rect.y > screen_height
+        return self.rect.y > SCREEN_HEIGHT
 
     def update(self):
         self.get_input()

@@ -21,16 +21,16 @@ class Level:
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
                 has_grass = True
-                x = col_index * tile_size
-                y = row_index * tile_size
+                x = col_index * TILE_SIZE
+                y = row_index * TILE_SIZE
                 
                 if cell == "x":
                     try:
-                        if level_map[row_index - 1][col_index] == "x":
+                        if LEVEL_MAP[row_index - 1][col_index] == "x":
                             has_grass = False
                     except:
                         pass
-                    tile = Tile((x, y), tile_size, has_grass)
+                    tile = Tile((x, y), TILE_SIZE, has_grass)
                     self.tiles.add(tile)
 
                 if cell == 'P':
@@ -38,7 +38,7 @@ class Level:
                     self.player.add(player_sprite)
                 
                 if cell == 'B':
-                    coin = Coin((x, y), coin_size)
+                    coin = Coin((x, y), COIN_SIZE)
                     self.coins.add(coin)
 
     def scroll_x(self):
@@ -46,15 +46,15 @@ class Level:
         player_x = player.rect.centerx
         direction_x = player.direction.x
 
-        if player_x < left_limit and direction_x < 0:
-            self.world_shift = speed
+        if player_x < LEFT_LIMIT and direction_x < 0:
+            self.world_shift = SPEED
             player.speed = 0
-        elif player_x > right_limit and direction_x > 0:
-            self.world_shift = -speed
+        elif player_x > RIGHT_LIMIT and direction_x > 0:
+            self.world_shift = -SPEED
             player.speed = 0
         else:
             self.world_shift = 0
-            player.speed = speed
+            player.speed = SPEED
 
     def horizontal_movement_collision(self):
         player = self.player.sprite
@@ -107,7 +107,7 @@ class Level:
 
     def print_final_message(self):
         final_message = self.font_end.render(f'You win', True, (255, 255, 255))
-        final_message_rect = final_message.get_rect(center=(screen_width / 2, screen_height / 2))
+        final_message_rect = final_message.get_rect(center=(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2))
         self.display_surface.blit(final_message, final_message_rect)
 
     def run(self):

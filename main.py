@@ -4,10 +4,10 @@ from level import Level
 from coin import Coin
 
 pygame.init()
-screen = pygame.display.set_mode((screen_width, screen_height))
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pygame.time.Clock()
-level = Level(level_map, screen)
-bg_image = pygame.transform.scale(pygame.image.load('graphics/level/background.png').convert_alpha(), (screen_width, screen_height))
+level = Level(LEVEL_MAP, screen)
+bg_image = pygame.transform.scale(pygame.image.load('graphics/level/background.png').convert_alpha(), (SCREEN_WIDTH, SCREEN_HEIGHT))
 bg_music = pygame.mixer.music.load("sounds/music.ogg")
 
 pygame.mixer.music.play(-1)
@@ -25,4 +25,4 @@ while not level.game_over():
 	pygame.display.update()
 	clock.tick(60)
 
-clock.tick(1000)
+pygame.time.delay(3000)

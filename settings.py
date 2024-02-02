@@ -1,4 +1,4 @@
-level_map = [
+LEVEL_MAP = [
  'xxxxxx      B      B      B        xxxxxx',
  'xxxxxx     xxx    xxx    xxx    B  xxxxxx',
  'xxxxxx                B   xxxxxxxxxxxxxxx',
@@ -11,12 +11,12 @@ level_map = [
  'xxxxxx   P      xxxx               xxxxxx',
  'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx']
 
-tile_size = 64
-screen_width = 1200
-screen_height = len(level_map) * tile_size
-speed = 8
-left_limit = screen_width // 4
-right_limit = screen_width - (screen_width // 4)
-gravity = 0.8
-jump_speed = -16
-coin_size = 50
+TILE_SIZE = 64
+SCREEN_WIDTH = 1200
+SCREEN_HEIGHT = len(LEVEL_MAP) * TILE_SIZE
+SPEED = 8
+LEFT_LIMIT = SCREEN_WIDTH // 4
+RIGHT_LIMIT = SCREEN_WIDTH - (SCREEN_WIDTH // 4)
+GRAVITY = 0.8
+JUMP_SPEED = -16
+COIN_SIZE = 50

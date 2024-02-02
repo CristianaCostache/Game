@@ -20,12 +20,3 @@ class Coin(pygame.sprite.Sprite):
                 mult = -1
             self.rect.y += mult * 2
             self.counter = (self.counter + 1) % 10
-
-        # if self.counter % 60 == 0:
-        #     self.rect.y += 1
-        #     # flipped_image = pygame.transform.flip(self.image, True, False)
-        #     # self.image = flipped_image
-        #     if self.counter == 60:
-        #         self.counter = 1
-        # self.counter += 1
-
